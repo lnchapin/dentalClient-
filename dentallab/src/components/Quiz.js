@@ -35,6 +35,7 @@ class QuestionClass extends Component {
       })
       console.log('post loop questions', this.state.questions)
       console.log('correc arr', this.state.correctAnswer);
+      console.log();
     } catch(error) {
       console.error(error);
     }
@@ -53,14 +54,19 @@ componentDidMount(){
     return(
           <div>
             <form>
-            {this.state.questions.map(answer =>
+            {this.state.questions.map((answer, index) =>
              <div>
                <h3>{answer[0]}</h3>
-               <label>
 
-               {answer[1].map(option => {<input type="radio" value="option1" />, {option}})}
+
+               {answer[1].map(option => {
+                 return <label>
+                 <input type="radio" value={option} name={`answer${index}`} /> {option}<br/>
                </label>
+               })}
+
              </div>)}
+             <button type="submit" name="button">Submit</button>
              </form>
           </div>
       )
@@ -68,11 +74,3 @@ componentDidMount(){
   }
 }
 export default QuestionClass;
-
-{/* <div>
-  {this.state.questions.map(answer =>
-   <div>
-     <h3>{answer[0]}</h3>
-     {answer[1].map(options => <li>{options}</li>)}
-   </div>)}
-</div> */}
