@@ -27,7 +27,7 @@ class QuestionClass extends Component {
       for (var i = 0; i < response.length; i++) {
         var answerChoices = []
         answerChoices.push(response[i].correctAnswer, response[i].incorrectAnswer1, response[i].incorrectAnswer2, response[i].incorrectAnswer3);
-        this.state.questions.push([response[i].questionText, shuffle(answerChoices)])
+        this.state.questions.push([response[i].questionText, shuffle(answerChoices), response[i].id])
         this.state.correctAnswer.push(response[i].correctAnswer)
       }
       this.setState({
@@ -55,12 +55,12 @@ componentDidMount(){
           <div>
             <form>
             {this.state.questions.map((answer, index) =>
-             <div>
+             <div key={answer[2]}>
                <h3>{answer[0]}</h3>
 
 
                {answer[1].map(option => {
-                 return <label>
+                 return <label key={`${answer[2]}.${option}`}>
                  <input type="radio" value={option} name={`answer${index}`} /> {option}<br/>
                </label>
                })}
