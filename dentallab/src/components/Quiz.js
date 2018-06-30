@@ -40,6 +40,10 @@ class QuestionClass extends Component {
       console.error(error);
     }
 }
+handleSubmit(event) {
+  event.preventDefault();
+  console.log("hello");
+}
 
 componentDidMount(){
   this.getQuestions();
@@ -66,7 +70,7 @@ componentDidMount(){
                })}
 
              </div>)}
-             <button type="submit" name="button">Submit</button>
+             <button type="submit" name="button" onSubmit={this.handleSubmit()}>Submit</button>
              </form>
           </div>
       )
