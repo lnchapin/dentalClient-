@@ -40,8 +40,8 @@ class QuestionClass extends Component {
       console.error(error);
     }
 }
-handleSubmit(event) {
-  event.preventDefault();
+handleSubmit(e) {
+  e.preventDefault();
   console.log("hello");
 }
 
@@ -70,7 +70,7 @@ componentDidMount(){
                })}
 
              </div>)}
-             <button type="submit" name="button" onSubmit={this.handleSubmit()}>Submit</button>
+             <button onClick={this.handleSubmit} name="button">Submit</button>
              </form>
           </div>
       )
