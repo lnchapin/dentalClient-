@@ -15,7 +15,8 @@ class QuestionClass extends Component {
     this.state = {
       isLoading: true,
       questions: [],
-      correctAnswer: []
+      correctAnswer: [],
+      score: 0
   }
 }
 
@@ -43,6 +44,27 @@ class QuestionClass extends Component {
 handleSubmit(e) {
   e.preventDefault();
   const formData=new FormData(e.target)
+  const userAnswer = this.state.questions.map((answer, index) => formData.get(`answer${index}`))
+
+  if (this.state.questions.map((answer, index) => formData.get(`answer${index}`)).includes(null)) {
+    alert("Please answer all questions")
+  }else{
+    for (var i = 0; i < userAnswer.length; i++) {
+      if (userAnswer[i] == this.state.correctAnswer[i]) {
+        console.log(i + " correct");
+        this.state.score++
+        let questionBlock = document.getElementById(i+1)
+        questionBlock.classList.add("correct")
+      } else {
+        console.log(i + " incorrect");
+        let questionBlock = document.getElementById(i+1)
+        questionBlock.classList.add("incorrect")
+      }
+    }
+    //mark which ones are correct and which are incorrect.
+  }
+  console.log(this.state.score);
+  console.log("line 49",this.state.correctAnswer);
   console.log(this.state.questions.map((answer, index) => formData.get(`answer${index}`)));
 }
 
@@ -60,7 +82,7 @@ componentDidMount(){
           <div>
             <form onSubmit={this.handleSubmit.bind(this)}>
             {this.state.questions.map((answer, index) =>
-             <div key={answer[2]}>
+             <div key={answer[2]} id={answer[2]} className="">
                <h3>{answer[0]}</h3>
 
 
