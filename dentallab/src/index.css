@@ -5,9 +5,13 @@ body {
 }
 
 .correct{
-  background-color: green;
+  background-color: #99e59e;
 }
 
 .incorrect{
-  background-color: red;
+  background-color: #ff7f7f;
+}
+
+.hide{
+  display: none;
 }

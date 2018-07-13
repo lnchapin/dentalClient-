@@ -49,6 +49,7 @@ handleSubmit(e) {
   if (this.state.questions.map((answer, index) => formData.get(`answer${index}`)).includes(null)) {
     alert("Please answer all questions")
   }else{
+    document.getElementById("submitButton").classList.add("hide")
     for (var i = 0; i < userAnswer.length; i++) {
       if (userAnswer[i] == this.state.correctAnswer[i]) {
         console.log(i + " correct");
@@ -93,7 +94,7 @@ componentDidMount(){
                })}
 
              </div>)}
-             <button name="button">Submit</button>
+             <button name="button" id="submitButton" className="">Submit</button>
              </form>
           </div>
       )
