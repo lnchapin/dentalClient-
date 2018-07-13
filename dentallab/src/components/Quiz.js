@@ -42,7 +42,8 @@ class QuestionClass extends Component {
 }
 handleSubmit(e) {
   e.preventDefault();
-  console.log("hello");
+  const formData=new FormData(e.target)
+  console.log(this.state.questions.map((answer, index) => formData.get(`answer${index}`)));
 }
 
 componentDidMount(){
@@ -57,7 +58,7 @@ componentDidMount(){
     } else if(this.state.isLoading === false) {
     return(
           <div>
-            <form>
+            <form onSubmit={this.handleSubmit.bind(this)}>
             {this.state.questions.map((answer, index) =>
              <div key={answer[2]}>
                <h3>{answer[0]}</h3>
@@ -70,7 +71,7 @@ componentDidMount(){
                })}
 
              </div>)}
-             <button onClick={this.handleSubmit} name="button">Submit</button>
+             <button name="button">Submit</button>
              </form>
           </div>
       )
