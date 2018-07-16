@@ -80,12 +80,11 @@ componentDidMount(){
       )
     } else if(this.state.isLoading === false) {
     return(
-          <div id="quiz">
+          <div>
             <form onSubmit={this.handleSubmit.bind(this)}>
             {this.state.questions.map((answer, index) =>
              <div key={answer[2]} id={answer[2]} className="">
                <h3>{answer[0]}</h3>
-
 
                {answer[1].map(option => {
                  return <label key={`${answer[2]}.${option}`}>
