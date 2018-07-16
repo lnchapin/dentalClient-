@@ -62,11 +62,7 @@ handleSubmit(e) {
         questionBlock.classList.add("incorrect")
       }
     }
-    //mark which ones are correct and which are incorrect.
   }
-  console.log(this.state.score);
-  console.log("line 49",this.state.correctAnswer);
-  console.log(this.state.questions.map((answer, index) => formData.get(`answer${index}`)));
 }
 
 componentDidMount(){
