@@ -65,6 +65,10 @@ handleSubmit(e) {
   }
 }
 
+retake(e){
+  window.location.reload()
+}
+
 componentDidMount(){
   this.getQuestions();
 }
@@ -90,7 +94,9 @@ componentDidMount(){
 
              </div>)}
              <button name="button" id="submitButton" className="">Submit</button>
+
              </form>
+             <button name="button" id="retakeButton" onClick={this.retake.bind(this)}>Retake Quiz</button>
           </div>
       )
     }
