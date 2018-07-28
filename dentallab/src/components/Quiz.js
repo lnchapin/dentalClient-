@@ -41,10 +41,12 @@ class QuestionClass extends Component {
       console.error(error);
     }
 }
+
 handleSubmit(e) {
   e.preventDefault();
   const formData=new FormData(e.target)
   const userAnswer = this.state.questions.map((answer, index) => formData.get(`answer${index}`))
+  let score = 0
 
   if (this.state.questions.map((answer, index) => formData.get(`answer${index}`)).includes(null)) {
     alert("Please answer all questions")
@@ -53,15 +55,17 @@ handleSubmit(e) {
     for (var i = 0; i < userAnswer.length; i++) {
       if (userAnswer[i] == this.state.correctAnswer[i]) {
         console.log(i + " correct");
-        this.state.score++
+        score++
         let questionBlock = document.getElementById(i+1)
         questionBlock.classList.add("correct")
+        this.setState({ score: score })
       } else {
         console.log(i + " incorrect");
         let questionBlock = document.getElementById(i+1)
         questionBlock.classList.add("incorrect")
       }
     }
+    document.getElementById("afterSubmit").classList.remove("hide")
   }
 }
 
@@ -80,24 +84,24 @@ componentDidMount(){
       )
     } else if(this.state.isLoading === false) {
     return(
-          <div>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-            {this.state.questions.map((answer, index) =>
-             <div key={answer[2]} id={answer[2]} className="">
-               <h3>{answer[0]}</h3>
-
-               {answer[1].map(option => {
-                 return <label key={`${answer[2]}.${option}`}>
-                 <input type="radio" value={option} name={`answer${index}`} /> {option}<br/>
-               </label>
-               })}
-
-             </div>)}
-             <button name="button" id="submitButton" className="">Submit</button>
-
-             </form>
-             <button name="button" id="retakeButton" onClick={this.retake.bind(this)}>Retake Quiz</button>
-          </div>
+      <div>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+        {this.state.questions.map((answer, index) =>
+         <div key={answer[2]} id={answer[2]} className="">
+           <h3>{answer[0]}</h3>
+           {answer[1].map(option => {
+             return <label key={`${answer[2]}.${option}`}>
+             <input type="radio" value={option} name={`answer${index}`} /> {option}<br/>
+           </label>
+           })}
+         </div>)}
+         <button name="button" id="submitButton" className="">Submit</button>
+         </form>
+         <div id="afterSubmit" className="hide">
+           <h3>{this.state.score}/{this.state.questions.length}</h3>
+           <button name="button" id="retakeButton" onClick={this.retake.bind(this)}>Retake Quiz</button>
+         </div>
+      </div>
       )
     }
   }
