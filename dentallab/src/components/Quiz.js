@@ -28,7 +28,7 @@ class QuestionClass extends Component {
       for (var i = 0; i < response.length; i++) {
         var answerChoices = []
         answerChoices.push(response[i].correctAnswer, response[i].incorrectAnswer1, response[i].incorrectAnswer2, response[i].incorrectAnswer3);
-        this.state.questions.push([response[i].questionText, shuffle(answerChoices), response[i].id])
+        this.state.questions.push([response[i].questionText, shuffle(answerChoices), response[i].id, response[i].imgSrc])
         this.state.correctAnswer.push(response[i].correctAnswer)
       }
       this.setState({
