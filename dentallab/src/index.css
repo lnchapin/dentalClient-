@@ -1,8 +1,3 @@
-html{
-  background-color: #f1dfd1;
-  background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%);
-}
-
 body {
   margin: 0 10% 10%;
   padding: 0;
@@ -12,13 +7,17 @@ body {
 .correct{
   background-color: #99e59e;
   border-radius: 10px;
-  margin: 2px;
+  margin: 5px;
+  padding: 2px;
+  padding-bottom: 5px;
 }
 
 .incorrect{
   background-color: #ff7f7f;
   border-radius: 10px;
-  margin: 2px;
+  margin: 5px;
+  padding: 2px;
+  padding-bottom: 5px;
 }
 
 .hide{
@@ -28,7 +27,11 @@ body {
 h1 {
   font-family: 'Montserrat', sans-serif;
 }
-
+h3{
+  margin: 0;
+  padding-top: 6px;
+  padding-bottom: 1px;
+}
 button{
   padding: 10px;
   border-radius: 10px;
