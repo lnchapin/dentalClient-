@@ -4,7 +4,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.header-container{
+.header-container > img{
   max-width: 100%;
   max-height: 100%;
 }
