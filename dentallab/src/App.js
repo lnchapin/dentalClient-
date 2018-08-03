@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header'
 import Quiz from './components/Quiz'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Quiz />
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-      </div>
+      <div className="App Site">
+        <div className='Site-content'>
+            <div >
+                <Header />
+            </div>
+            <div className="main">
+                <Quiz />
+            </div>
+        </div>
+        <Footer />
+    </div>
     );
   }
 }

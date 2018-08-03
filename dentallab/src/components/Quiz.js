@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -22,7 +21,7 @@ class QuestionClass extends Component {
 
   async getQuestions() {
     try{
-      let response = await fetch(`http://localhost:3030/api/v1/questions`)
+      let response = await fetch(process.env.REACT_APP_DL)
       .then(response => response.json())
       for (var i = 0; i < response.length; i++) {
         var answerChoices = []
@@ -49,7 +48,7 @@ handleSubmit(e) {
   }else{
     document.getElementById("submitButton").classList.add("hide")
     for (var i = 0; i < userAnswer.length; i++) {
-      if (userAnswer[i] == this.state.correctAnswer[i]) {
+      if (userAnswer[i] === this.state.correctAnswer[i]) {
         score++
         let questionBlock = document.getElementById(i+1)
         questionBlock.classList.add("correct")
