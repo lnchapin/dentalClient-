@@ -4,7 +4,7 @@ class Header extends React.Component {
   render(){
     return(
     <div className='header-container'>
-      <h1>Dental Lab Quiz</h1>
+      <img src={"./img/dentalLabQuiz.png"} alt="Dental Lab Quiz Logo"/>
     </div>
   )
   }
